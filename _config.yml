@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: ShinyFlight
+title: Life is a greedy algorithm
 subtitle:
 description:
-author: Uiwon Hwang
+author: Uiwon Hwang (shinyflight)
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
 date_format: '%Y-%m-%d'
@@ -323,7 +323,7 @@ post_wordcount:
 
 # Wechat Subscriber
 #wechat_subscriber:
-  #enabled: true
+  #enabled: false
   #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
   #description: ex. subscribe to my blog by scanning my public wechat account
 
@@ -345,15 +345,15 @@ post_copyright:
 #   enabled: [true/false] - Replace with specific image
 #   image: url-of-image   - Images's url
 custom_logo:
-  enabled: false
-  image:
+  enabled: true
+  image: https://avatars2.githubusercontent.com/u/25117385?s=460&u=cb97d22b4c7cff7b27f54f1b9ea4ef1c0b8fe1b4&v=4
 
 
 # Code Highlight theme
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night eighties
 
 
 # ---------------------------------------------------------------
