@@ -79,7 +79,7 @@ plugins:
 favicon: /assets/images/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Jekyll, NexT"
+keywords: "Deep Learning, Machine Learning, Artificial Intelligence"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -90,7 +90,7 @@ rss:
 #since: 2015
 
 # icon between year and author @Footer
-authoricon: heart
+authoricon: plane
 
 # Footer `powered-by` and `theme-info` copyright
 copyright: true
@@ -151,9 +151,9 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
+#scheme: Muse
 #scheme: Mist
-#scheme: Pisces
+scheme: Pisces
 
 
 # ---------------------------------------------------------------
@@ -275,7 +275,7 @@ sidebar:
   offset_float: 0
 
   # Back to top in sidebar
-  b2t: false
+  b2t: true
 
   # Scroll percent label in b2t button
   scrollpercent: false
@@ -592,7 +592,7 @@ local_search:
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
   # show top n results per article, show all results by setting to -1
-  top_n_per_article: -1
+  top_n_per_article: 1
 
 # External URL with BASE64 encrypt & decrypt
 # Usage: {% exturl text url "title" %}
