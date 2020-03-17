@@ -69,9 +69,7 @@ always checked the provided documentation available at
 
 Let's try a first example. Here's a dummy equation:
 
-$$
-a^2 + b^2 = c^2
-$$
+$$ a^2 + b^2 = c^2 $$
 How do you write such expression? Very simple: using **double dollar** signs
 
 {% highlight r %}
