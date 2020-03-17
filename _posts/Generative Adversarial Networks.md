@@ -1,0 +1,97 @@
+---
+title: Generative Adversarial Networks
+categories:
+- Generative Models
+tags:
+- GAN
+---
+
+# Generative Adversarial Networks
+
+본 게시판에서는 제가 관심을 가지고 있는 generative model 들을 한국어로 간략히 정리하고, 실제로 어떻게 구현되는지를 확인해 보려고 합니다. 오류나 설명이 미흡한 부분이 있으면 댓글 또는 shinyflight@gmail.com으로 알려주시면 감사하겠습니다.
+
+## 0. Table of Contents
+
+[TOC]
+
+## 1. Introduction
+
+Generative Adversarial Networks (GAN)은 Goodfellow에 의해 NIPS 2014에서 처음 소개된 이후로 현재까지 꾸준히 사랑받는 generative model 입니다. 기존 머신러닝의 generative model에서 사용되던 방식과 GAN의 차이는 다음과 같습니다.
+
+### 1) 기존 generative models
+
+- 특정 probability density function (pdf)을 explicit하게 가정하고 이를 직접 학습합니다. 
+- Log-likelihood를 maximize하는 방식으로 data distribution을 학습합니다.
+  - 이는 data distribution과 pdf간의 KL divergence를 minimize하는 것과 같습니다. (Proof 1 참조)
+  - KL divergence 식을 고려하였을 때, pdf의 support를 벗어나는 data point가 있으면 KL divergence가 explode한다는 문제가 있습니다. ㅠㅠ
+- Data generation은 학습된 분포로부터 data를 sampling 하는 방식으로 이루어집니다. 
+  - MCMC 방법 등을 생각하면 계산량이 상당합니다. ㅠㅠ
+
+
+
+> **Proof 1.**  Log-likelihood를 maximize하는 것은 $p_{data}$와 $p_\theta$ 간의 Kullback-Leibler divergence를 minimize하는 것과 같다. (source: [Hong et al., 2017](https://arxiv.org/pdf/1711.05914.pdf))
+>
+> Log-likelihood를 maximize하는 parameter $\theta​$를 $\theta^*​$라 하면 다음과 같이 표현됩니다.
+> $$
+> \theta^*=\underset{\theta}{\operatorname{argmax}}\lim_{m \to \infty} \frac{1}{m} \sum^{m}_{i=1}\log{p_\theta(x^i)} \\
+> $$
+> $m \to \infty​$이면 expectation과 같으므로 다음과 같이 표현할 수 있습니다.
+> $$
+> = \underset{\theta}{\operatorname{argmax}}\int_x p_{\mathrm{data}}(x)\log{p_\theta(x)}dx
+> $$
+> KL divergence 식을 만들어주기 위해 $\theta​$와 무관한 term을 추가하여 정리하면 다음과 같습니다.
+> $$
+> \begin{aligned}
+> &= \underset{\theta}{\operatorname{argmin}}\int_x -p_{\mathrm{data}}(x)\log{p_\theta(x)} + p_{\mathrm{data}}(x)\log{p_{\mathrm{data}}(x)}dx \\
+> &= \underset{\theta}{\operatorname{argmin}}\int_x p_{\mathrm{data}} \log{\frac{p_{\mathrm{data}}(x)}{p_\theta(x)}}dx
+> \end{aligned}
+> $$
+> 그러면 KL divergence의 정의에 의해 원하는 식이 나타납니다.
+> $$
+> = \underset{\theta}{\operatorname{argmin}}KL(p_{\mathrm{data}}||p_\theta)
+> $$
+>
+> <div style="text-align: right"> ■ </div>
+
+### 2) GAN
+
+- 반면에 GAN은 explicit한 분포를 가정하지 않고, implicit하게 neural networks의 parameter를 이용합니다.
+  - 대신 real data와의 KL divergence를 구하기가 어렵습니다.
+- Generator (G)와 Discriminator (D) 간의 min-max game을 통해 얻어진 loss를 back-propagation하는 방식으로 학습합니다.
+- Data generation이 forward-propagation으로 단순합니다.
+
+
+
+## 2. Generative Adversarial Networks
+
+Vanilla GAN을 학습하기 위한 objective function은 다음과 같습니다.
+$$
+V(D,G)=\mathbb{E}_{x \sim p_{data}(x)}[\log{D(x)}] + \mathbb{E}_{z \sim p_{z}(z)}[\log{D(G(z))}]
+$$
+Generator는 $V(D,G)​$를 minimize하는 방향으로, Discriminator는 $V(D,G)​$를 maximize하는 방향으로 학습됩니다.
+
+
+
+## 3. VAE vs GAN
+
+최근 이용되는 deep generative model의 양대산맥으로 GAN과 Variational Autoencoder (VAE)를 꼽을 수 있습니다. 두 가지 방법으로 생성한 MNIST 이미지를 비교해 보면 GAN이 더 sharp한 이미지를 생성합니다.
+
+|                             VAE                              |                             GAN                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![img](https://t1.daumcdn.net/cfile/tistory/996649355C64FDDE19) | ![img](https://t1.daumcdn.net/cfile/tistory/993F27355C64FDDD11) |
+| ![img](https://t1.daumcdn.net/cfile/tistory/990597355C64FDDF1C) | ![img](https://t1.daumcdn.net/cfile/tistory/992474355C64FDDD1B) |
+
+ VAE가 blurry한 이미지를 생성하는 이유를 reconstruction loss에서 찾을 수 있습니다. VAE의 reconstruction loss는 $E_{z \sim q(z|x)}\log{p(x|z)}​$를 maximize하기 위한 term으로 보통 L2 loss (MSE)나 cross entropy를 이용합니다. VAE에서 $q​$를 Gaussian distribution으로 가정한 후 log-likelihood를 계산하였기 때문에  L2 loss가 유도되며, cross entropy는 미분값의 경향성이 유사하면서도 L2 loss의 학습 저하를 개선하기 위해 많이 사용됩니다. 그리고 일반적으로 L2 loss는 blurry한 이미지를 생성하는데 기여합니다. 이에 대한 설명은 [여기](https://wiseodd.github.io/techblog/2017/02/09/why-l2-blurry/)에 잘 설명되어 있습니다.
+
+
+
+## 4. Conclusion
+
+지금까지 GAN에 대해 간략히 소개하고, WGAN-GP의 구현과 실제 생성된 이미지를 살펴봤습니다. GAN이 최근에는 단순히 이미지 생성 뿐만 아니라 classification, semantic segmentation, domain adaptation 등 다양한 영역에 활용되고 있어 앞으로 어떻게 더 발전될지 기대되는 알고리즘입니다. 다음에는 Vanilla GAN에서 발생하는 문제를 해결하기 위한 논문들을 소개할 계획입니다.
+
+| <img style='max-height:90%; max-width:90%;'  src='https://t1.daumcdn.net/cfile/tistory/99D345355C64FDDE1D'> |
+| :----------------------------------------------------------: |
+|   (source: [Ociacia](https://www.deviantart.com/ociacia))    |
+
+
+
