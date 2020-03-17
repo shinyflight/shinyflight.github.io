@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: Life is a greedy algorithm
+title: ShinyFlight
 subtitle:
 description:
-author: Uiwon Hwang (shinyflight)
+author: Uiwon Hwang
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
 date_format: '%Y-%m-%d'
@@ -76,7 +76,7 @@ plugins:
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `assets/` directory.
-favicon: /assets/favicon.ico
+favicon: /assets/images/favicon.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "Jekyll, NexT"
@@ -151,8 +151,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-#scheme: Mist
+#scheme: Muse
+scheme: Mist
 #scheme: Pisces
 
 
@@ -232,8 +232,8 @@ social_icons:
 
 
 # Sidebar Avatar
-# in directory: /assets/images/avatar.gif
-#avatar:
+# in directory: /assets/images/shinyflight_logo.jpg
+avatar: /assets/images/shinyflight_logo.jpg
 
 
 # Table Of Contents in the Sidebar
@@ -345,8 +345,8 @@ post_copyright:
 #   enabled: [true/false] - Replace with specific image
 #   image: url-of-image   - Images's url
 custom_logo:
-  enabled: true
-  image: https://avatars2.githubusercontent.com/u/25117385?s=460&u=cb97d22b4c7cff7b27f54f1b9ea4ef1c0b8fe1b4&v=4
+  enabled: false
+  image: 
 
 
 # Code Highlight theme
