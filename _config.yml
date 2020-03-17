@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: Life is a Greedy Algorithm
-subtitle:
-description: Uiwon Hwang
-author: ShinyFlight
+title: title
+subtitle: subtitle
+description: description
+author: Uiwon Hwang
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
 date_format: '%Y-%m-%d'
@@ -151,9 +151,9 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-#scheme: Muse
+scheme: Muse
 #scheme: Mist
-scheme: Pisces
+#scheme: Pisces
 
 
 # ---------------------------------------------------------------
@@ -362,8 +362,8 @@ highlight_theme: night eighties
 
 # MathJax Support
 mathjax:
-  enable: true
-  per_page: true
+  enable: false
+  per_page: false
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 # Han Support docs: https://hanzi.pro/
