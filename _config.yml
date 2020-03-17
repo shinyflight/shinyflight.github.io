@@ -4,9 +4,9 @@
 # ---------------------------------------------------------------
 
 # Site
-title: ShinyFlight
-subtitle:
-description:
+title: title
+subtitle: subtitle
+description: description
 author: Uiwon Hwang
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
