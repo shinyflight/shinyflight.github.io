@@ -278,10 +278,10 @@ sidebar:
   offset_float: 0
 
   # Back to top in sidebar
-  b2t: true
+  b2t: false
 
   # Scroll percent label in b2t button
-  scrollpercent: false
+  scrollpercent: true
 
 
 # Blog rolls
