@@ -215,10 +215,9 @@ font:
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
   #LinkLabel: Link
+  CV: /about/CV.pdf
   GitHub: https://github.com/shinyflight
   LinkedIn: https://www.linkedin.com/in/uiwon-hwang/?originalSubdomain=kr
-  CV: /about/CV.pdf
-
 
 # Social Links Icons
 # Icon Mapping:
@@ -229,9 +228,9 @@ social_icons:
   enable: true
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
+  CV: file  
   GitHub: github
   LinkedIn: linkedin
-  CV: file
   #Twitter: twitter
   #Weibo: weibo
 
