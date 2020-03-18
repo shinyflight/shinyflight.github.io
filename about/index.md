@@ -8,7 +8,6 @@ type: about
 
 - **B.S. in Biomedical Engineering, Korea University**, Seoul, Korea
   ​	Brain Reverse Engineering by Intelligent Neuroimaging ([BREIN](http://brein.korea.ac.kr/lab/)) Lab.
-
 - **Ph.D. Candidate in Electrical & Computer Engineering, Seoul National University**, Seoul, Korea
   ​	Data Science & Artificial Intelligence Lab. ([DSAIL](http://ailab.snu.ac.kr/))
 
@@ -33,7 +32,7 @@ type: about
   IEEE Access, 2019.
 -  Yongjun Hong, **Uiwon Hwang**, Jaeyoon Yoo, Sungroh Yoon. 
   “**How Generative Adversarial Networks and Their Variants Work: An Overview.**” 
-  ACM Computing Surveys (CSUR), 2019.
+  ACM Computing Surveys (CSUR), 2019.  
 You can also see them in my [Google Scholar Profile](https://scholar.google.co.kr/citations?hl=en&user=CJ8-pGIAAAAJ)
 
 
@@ -41,5 +40,5 @@ You can also see them in my [Google Scholar Profile](https://scholar.google.co.k
 ### Contact
 
 - **E-mail**: uiwon.hwang@snu.ac.kr, shinyflight@gmail.com
-- **Phone**: +82-10-9461-2053 
+- **Phone**: +82-10-9461-2053  
 Please refer to my [CV](https://shinyflight.github.io/about/CV.pdf) for more details
