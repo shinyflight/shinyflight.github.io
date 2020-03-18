@@ -7,9 +7,9 @@ type: about
 ### Education
 
 - **B.S. in Biomedical Engineering, Korea University**, Seoul, Korea
-  ​	Brain Reverse Engineering by Intelligent Neuroimaging ([BREIN](http://brein.korea.ac.kr/lab/)) Lab.
+  ​	Brain Reverse Engineering by Intelligent Neuroimaging ([BREIN](http://brein.korea.ac.kr/lab/){: target="_blank"}) Lab.
 - **Ph.D. Candidate in Electrical & Computer Engineering, Seoul National University**, Seoul, Korea
-  ​	Data Science & Artificial Intelligence Lab. ([DSAIL](http://ailab.snu.ac.kr/))  
+  ​	Data Science & Artificial Intelligence Lab. ([DSAIL](http://ailab.snu.ac.kr/){: target="_blank"})  
 
 
 
@@ -34,7 +34,7 @@ type: about
   “**How Generative Adversarial Networks and Their Variants Work: An Overview.**” 
   ACM Computing Surveys (CSUR), 2019.  
 
-You can also see them in my [Google Scholar Profile](https://scholar.google.co.kr/citations?hl=en&user=CJ8-pGIAAAAJ)  
+You can also see them in my [Google Scholar Profile](https://scholar.google.co.kr/citations?hl=en&user=CJ8-pGIAAAAJ){: target="_blank"}  
 
 
 
@@ -43,4 +43,4 @@ You can also see them in my [Google Scholar Profile](https://scholar.google.co.k
 - **E-mail**: uiwon.hwang@snu.ac.kr, shinyflight@gmail.com
 - **Phone**: +82-10-9461-2053  
 
-Please refer to my [CV](https://shinyflight.github.io/about/CV.pdf) for more details
+Please refer to my [CV](https://shinyflight.github.io/about/CV.pdf){: target="_blank"} for more details
