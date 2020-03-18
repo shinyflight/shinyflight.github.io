@@ -6,9 +6,9 @@ type: about
 
 ### Education
 
-- **B.S. in Biomedical Engineering, Korea University**, Seoul, Korea
+- **B.S. in Biomedical Engineering, Korea University**, Seoul, Korea  
   ​	Brain Reverse Engineering by Intelligent Neuroimaging ([BREIN](http://brein.korea.ac.kr/lab/){: target="_blank"}) Lab.
-- **Ph.D. Candidate in Electrical & Computer Engineering, Seoul National University**, Seoul, Korea
+- **Ph.D. Candidate in Electrical & Computer Engineering, Seoul National University**, Seoul, Korea  
   ​	Data Science & Artificial Intelligence Lab. ([DSAIL](http://ailab.snu.ac.kr/){: target="_blank"})  
 
 
@@ -24,14 +24,14 @@ type: about
 
 ### Publications
 
-- **Uiwon Hwang**, Dahuin Jung, Sungroh Yoon. 
-  "**HexaGAN: Generative Adversarial Nets for Real World Classification.**" 
+- **Uiwon Hwang**, Dahuin Jung, Sungroh Yoon.  
+  "**HexaGAN: Generative Adversarial Nets for Real World Classification.**"  
   International Conference on Machine Learning (ICML), 2019.
-- **Uiwon Hwang**, Jaewoo Park, Hyemi Jang, Sungroh Yoon, Nam Ik Cho. 
-  "**PuVAE: A Variational Autoencoder to Purify Adversarial Examples.**" 
+- **Uiwon Hwang**, Jaewoo Park, Hyemi Jang, Sungroh Yoon, Nam Ik Cho.  
+  "**PuVAE: A Variational Autoencoder to Purify Adversarial Examples.**"  
   IEEE Access, 2019.
--  Yongjun Hong, **Uiwon Hwang**, Jaeyoon Yoo, Sungroh Yoon. 
-  “**How Generative Adversarial Networks and Their Variants Work: An Overview.**” 
+-  Yongjun Hong, **Uiwon Hwang**, Jaeyoon Yoo, Sungroh Yoon.  
+  “**How Generative Adversarial Networks and Their Variants Work: An Overview.**”  
   ACM Computing Surveys (CSUR), 2019.  
 
 You can also see them in my [Google Scholar Profile](https://scholar.google.co.kr/citations?hl=en&user=CJ8-pGIAAAAJ){: target="_blank"}  
