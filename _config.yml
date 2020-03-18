@@ -216,6 +216,8 @@ font:
 social:
   #LinkLabel: Link
   GitHub: https://github.com/shinyflight
+  LinkedIn: https://www.linkedin.com/in/uiwon-hwang/?originalSubdomain=kr
+  CV: /about/CV.pdf
 
 
 # Social Links Icons
@@ -228,6 +230,8 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
+  LinkedIn: linkedin
+  CV: file
   #Twitter: twitter
   #Weibo: weibo
 
