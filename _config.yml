@@ -68,8 +68,8 @@ feed:
 ## Docs: https://help.github.com/articles/configuring-jekyll-plugins/
 plugins:
  - jemoji
- - jekyll-sitemap
- - jekyll-feed
+ #- jekyll-sitemap
+ #- jekyll-feed
 
 # ---------------------------------------------------------------
 # Site Information Settings
