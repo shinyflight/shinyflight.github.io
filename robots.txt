@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://shinyflight.github.io/sitemap.xml
+Sitemap: http://shinyflight.github.io/sitemap.xml
