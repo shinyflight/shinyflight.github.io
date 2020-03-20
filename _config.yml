@@ -69,7 +69,7 @@ feed:
 plugins:
  - jemoji
  - jekyll-sitemap
- - jekyll-feed
+ #- jekyll-feed
 
 # ---------------------------------------------------------------
 # Site Information Settings
