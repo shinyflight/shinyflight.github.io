@@ -1,5 +1,5 @@
 ---
-title: About
+title: Uiwon Hwang
 layout: page
 type: about
 ---
