@@ -4,6 +4,7 @@ categories:
 - Noisy Label
 tags:
 - Noisy Label
+use_math: true
 ---
 
 # Joint Optimization Framework for Learning with Noisy Labels
