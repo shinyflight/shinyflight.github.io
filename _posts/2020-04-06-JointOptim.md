@@ -110,7 +110,7 @@ Hard-label method는 현재 DNN의 output을 보고 **one-hot label로 $Y$를 up
 
 $$y_{ij} = 
 \begin{cases}
-  1  & \text{if} \ \ \  j=\argmax_{j'}{s_{j'}(\boldsymbol{\theta}, \boldsymbol{x}_i)}\\
+  1  & \text{if} \ \ \  j=\arg \max_{j'}{s_{j'}(\boldsymbol{\theta}, \boldsymbol{x}_i)}\\
   0  & \text{otherwise} \tag{6}
 \end{cases}
 $$
