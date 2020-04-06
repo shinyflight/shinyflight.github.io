@@ -7,8 +7,6 @@ tags:
 use_math: true
 ---
 
-# Joint Optimization Framework for Learning with Noisy Labels
-
 오늘 리뷰할 논문은 CVPR 2018에 발표된 **Joint Optimization Framework for Learning with Noisy Labels**이라는 논문입니다 ([논문 링크](https://arxiv.org/abs/1803.11364)).  Noisy label과 관련된 첫 번째 리뷰이고, 앞으로 이 주제의 논문들을 제가 이해한 범위에서 꾸준히 리뷰할 계획입니다.
 
 일반적으로 Large dataset을 만들기 위해 Crowd sourcing이나 Web crawling 등의 방법을 이용하는데, 이러한 방법들은 부정확하게 라벨링된 데이터를 만들게 됩니다.
