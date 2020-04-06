@@ -5,12 +5,8 @@
 
 <hr>
 <p>title: Joint Optimization Framework for Learning with Noisy Labels<br>
-categories:</p>
-<ul>
-<li>Noisy Label<br>
-tags:</li>
-<li>Noisy Label</li>
-</ul>
+categories: Noisy Label<br>
+tags: Noisy Label</p>
 <hr>
 <h1 id="joint-optimization-framework-for-learning-with-noisy-labels">Joint Optimization Framework for Learning with Noisy Labels</h1>
 <p>오늘 리뷰할 논문은 CVPR 2018에 발표된 <strong>Joint Optimization Framework for Learning with Noisy Labels</strong>이라는 논문입니다 (<a href="https://arxiv.org/abs/1803.11364">논문 링크</a>).  Noisy label과 관련된 첫 번째 리뷰이고, 앞으로 이 주제의 논문들을 제가 이해한 범위에서 꾸준히 리뷰할 계획입니다.</p>
