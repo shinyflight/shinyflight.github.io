@@ -127,7 +127,7 @@ $$\boldsymbol{y}_i = \boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i) \tag{7
 
 ### Regularization Terms
 
-이제 식 (3)의 뒤의 두 term인 $\mathcal{L}_p(\boldsymbol{\theta}|X)$와 $\mathcal{L}_e(\boldsymbol{\theta}|X)$을 마저 설명하겠습니다. 
+이제 식 (3)의 뒤의 두 term인 $\mathcal{L}_p(\boldsymbol{\theta} \vert X)$와 $\mathcal{L}_e(\boldsymbol{\theta} \vert X)$을 마저 설명하겠습니다. 
 
 #### Regularization loss $\mathcal{L}_p$
 
