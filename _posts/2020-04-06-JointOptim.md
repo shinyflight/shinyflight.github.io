@@ -70,7 +70,7 @@ Noisy label을 위해 self-training scheme ([논문링크](https://arxiv.org/abs
 
 일반적인 supervised learning은 다음과 같은 optimization problem으로 formulation 됩니다.
 
-$$\min_{\bm{\theta}}\mathcal{L}(\bm{\theta}|X,Y) \tag{1}$$
+$$\min_{\boldsymbol{\theta}}\mathcal{L}(\boldsymbol{\theta}|X,Y) \tag{1}$$
 
 여기서 $\mathcal{L}$은 cross entropy loss이고, 데이터셋에 clean data만 있다고 가정하면 위와 같은 optimization problem을 통해 DNN의 parameter가 잘 학습됩니다.
 
@@ -78,29 +78,29 @@ $$\min_{\bm{\theta}}\mathcal{L}(\bm{\theta}|X,Y) \tag{1}$$
 
 이러한 아이디어로 noisy label이 있는 상황에서의 supervised learning 문제를 DNN의 parameter와 label을 joint optimize하는 문제로 아래와 같이 formulation하게 됩니다.
 
-$$\min_{\bm{\theta},Y}\mathcal{L}(\bm{\theta},Y|X) \tag{2}$$
+$$\min_{\boldsymbol{\theta},Y}\mathcal{L}(\boldsymbol{\theta},Y|X) \tag{2}$$
 
 이렇게 제안된 loss function은 다시 세개의 term으로 나눌 수 있습니다.
 
-$$\mathcal{L}(\bm{\theta},Y|X) =\mathcal{L}_c(\bm{\theta},Y|X) + \alpha \mathcal{L}_p(\bm{\theta}|X)+\beta\mathcal{L}_e(\bm{\theta}|X) \tag{3}$$
+$$\mathcal{L}(\boldsymbol{\theta},Y|X) =\mathcal{L}_c(\boldsymbol{\theta},Y|X) + \alpha \mathcal{L}_p(\boldsymbol{\theta}|X)+\beta\mathcal{L}_e(\boldsymbol{\theta}|X) \tag{3}$$
 
-$\mathcal{L}_c$는 classification loss로 다음과 같이 label $\bm{y}$와 final layer의 output $\bm{s}$ 간의 KL divergence로 계산합니다.
+$\mathcal{L}_c$는 classification loss로 다음과 같이 label $\boldsymbol{y}$와 final layer의 output $\boldsymbol{s}$ 간의 KL divergence로 계산합니다.
 
-$$\mathcal{L}_c(\bm{\theta},Y|X) = {1\over n}\sum_{i=1}^n D_{KL}(\bm{y}_i || \bm{s}(\bm{\theta}, \bm{x}_i)) \tag{4}$$
+$$\mathcal{L}_c(\boldsymbol{\theta},Y|X) = {1 \over n}\sum_{i=1}^n D_{KL}(\boldsymbol{y}_i || \boldsymbol{s}(\boldsymbol{\theta}, \boldsymbol{x}_i)) \tag{4}$$
 
-$$D_{KL}(\bm{y}_i || \bm{s}(\bm{\theta}, \bm{x}_i)) = \sum_{j=1}^c y_{ij}\log{ \left( {y_{ij}\over s_j} (\bm{\theta},\bm{x}_i) \right) } \tag{5}$$
+$$D_{KL}(\boldsymbol{y}_i || \boldsymbol{s}(\boldsymbol{\theta}, \boldsymbol{x}_i)) = \sum_{j=1}^c y_{ij}\log{ \left( {y_{ij}\over s_j} (\boldsymbol{\theta},\boldsymbol{x}_i) \right) } \tag{5}$$
 
-여기서 $c$는 class 수 입니다. 따라서 $\bm{y}_i$는 one-hot vector이고, $\bm{s}(\bm{\theta},\bm{x}_i)$는 softmax output인 상황에서 이 두 벡터의 차이 (KL divergence)를 loss로 정의하였습니다. (아마 $\bm{y}_i$와 $\bm{s}(\bm{\theta},\bm{x}_i)$의 분포 간 차이를 loss로 한다는 철학에서 우리가 일반적으로 알고있는 Cross-entropy 대신 KL divergence를 택한 것 같습니다.) 나머지 두 loss에 대해 설명하기 위해서는 label의 optimization을 먼저 이야기해야 하기 때문에 뒤에서 다루도록 하겠습니다.
+여기서 $c$는 class 수 입니다. 따라서 $\boldsymbol{y}_i$는 one-hot vector이고, $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$는 softmax output인 상황에서 이 두 벡터의 차이 (KL divergence)를 loss로 정의하였습니다. (아마 $\boldsymbol{y}_i$와 $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$의 분포 간 차이를 loss로 한다는 철학에서 우리가 일반적으로 알고있는 Cross-entropy 대신 KL divergence를 택한 것 같습니다.) 나머지 두 loss에 대해 설명하기 위해서는 label의 optimization을 먼저 이야기해야 하기 때문에 뒤에서 다루도록 하겠습니다.
 
 ### Alternating Optimization
-본 논문에서 제안하는 learning framework는 DNN의 parameter $\bm{\theta}$와 class label $Y$를 번갈아가며 update하게 됩니다. Update rule은 다음과 같습니다.
+본 논문에서 제안하는 learning framework는 DNN의 parameter $\boldsymbol{\theta}$와 class label $Y$를 번갈아가며 update하게 됩니다. Update rule은 다음과 같습니다.
 
-* $Y$를 고정하고  $\bm{\theta}$를 update
-	- 식 (3)의 모든 term은 $\bm{\theta}$로 미분가능합니다.
-	- 따라서 stochastic gradient descent (SGD)로 $\bm{\theta}$를 update할 수 있습니다.
-* $\bm{\theta}$를 고정하고  $Y$를 update
-	* $Y$는 식 (3)의 첫 번째 term인 $\mathcal{L}_c(\bm{\theta},Y|X)$과만 관련이 있습니다.
-	* 식 (4)의 optimization 문제는 각 data point의 label $\bm{y}_i$을 optimize하는 문제로 쪼개집니다.
+* $Y$를 고정하고  $\boldsymbol{\theta}$를 update
+	- 식 (3)의 모든 term은 $\boldsymbol{\theta}$로 미분가능합니다.
+	- 따라서 stochastic gradient descent (SGD)로 $\boldsymbol{\theta}$를 update할 수 있습니다.
+* $\boldsymbol{\theta}$를 고정하고  $Y$를 update
+	* $Y$는 식 (3)의 첫 번째 term인 $\mathcal{L}_c(\boldsymbol{\theta},Y \vert X)$과만 관련이 있습니다.
+	* 식 (4)의 optimization 문제는 각 data point의 label $\boldsymbol{y}_i$을 optimize하는 문제로 쪼개집니다.
 
 Label을 optmize하는 것은 label과 DNN의 output 간의 KL divergence를 줄이는 것으로 볼 수 있고, label의 output 분포를  은 두 가지로 생각해 볼 수 있습니다.
 
@@ -110,7 +110,7 @@ Hard-label method는 현재 DNN의 output을 보고 **one-hot label로 $Y$를 up
 
 $$y_{ij} = 
 \begin{cases}
-  1  & \text{if} \ \ \  j=\argmax_{j'}{s_{j'}(\bm{\theta}, \bm{x}_i)}\\
+  1  & \text{if} \ \ \  j=\argmax_{j'}{s_{j'}(\boldsymbol{\theta}, \boldsymbol{x}_i)}\\
   0  & \text{otherwise} \tag{6}
 \end{cases}
 $$
@@ -121,33 +121,33 @@ $$
 
 Soft-label method는 **softmax output을 그대로 label로 update**하는 방식입니다. 수식으로 나타내면 다음과 같습니다.
 
-$$\bm{y}_i = \bm{s}(\bm{\theta},\bm{x}_i) \tag{7}$$
+$$\boldsymbol{y}_i = \boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i) \tag{7}$$
 
 저자들이 두 가지 방법 모두 실험해 보았는데 soft-label method가 더 좋은 결과를 보였다고 합니다.
 
 ### Regularization Terms
 
-이제 식 (3)의 뒤의 두 term인 $\mathcal{L}_p(\bm{\theta}|X)$와 $\mathcal{L}_e(\bm{\theta}|X)$을 마저 설명하겠습니다. 
+이제 식 (3)의 뒤의 두 term인 $\mathcal{L}_p(\boldsymbol{\theta}|X)$와 $\mathcal{L}_e(\boldsymbol{\theta}|X)$을 마저 설명하겠습니다. 
 
 #### Regularization loss $\mathcal{L}_p$
 
-$\mathcal{L}_p$는 모든 label이 하나의 class로 쏠리는 상황을 방지하기 위한 regularization loss 입니다. 식 (4)를 다시 잘 보면 label $\bm{y}_i$에 $\bm{s}(\bm{\theta},\bm{x}_i)$를 따라가도록 update하면서, $\bm{s}(\bm{\theta},\bm{x}_i)$가 $\bm{y}_i$을 따라가도록 DNN의 parameter를 학습합니다. 그러면 $\bm{y}_i$가 고정된 일반적인 supervised learning과는 달리 $\bm{y}_i$와 $\bm{s}(\bm{\theta},\bm{x}_i)$ 모두 변할 수 있으므로 지지대(?)가 없어서, 모든 데이터의 $\bm{y}_i$와 $\bm{s}(\bm{\theta},\bm{x}_i)$가 같은 class로 쏠리더라도 식 (4)의 loss는 작게 유지될 수 있습니다. 
+$\mathcal{L}_p$는 모든 label이 하나의 class로 쏠리는 상황을 방지하기 위한 regularization loss 입니다. 식 (4)를 다시 잘 보면 label $\boldsymbol{y}_i$에 $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$를 따라가도록 update하면서, $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$가 $\boldsymbol{y}_i$을 따라가도록 DNN의 parameter를 학습합니다. 그러면 $\boldsymbol{y}_i$가 고정된 일반적인 supervised learning과는 달리 $\boldsymbol{y}_i$와 $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$ 모두 변할 수 있으므로 지지대(?)가 없어서, 모든 데이터의 $\boldsymbol{y}_i$와 $\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)$가 같은 class로 쏠리더라도 식 (4)의 loss는 작게 유지될 수 있습니다. 
 
-따라서 class의 prior distribution $\bm{p}$를 도입하여 $s_{ij}$를 데이터 방향으로 평균낸 **$\bar{s}_j$가 prior $\bm{p}$의 분포를 따라가게끔 하자**는 아이디어로 제안한 regularization loss 입니다. 이를 KL divergence를 이용하여 다음과 같이 나타낼 수 있습니다.
+따라서 class의 prior distribution $\boldsymbol{p}$를 도입하여 $s_{ij}$를 데이터 방향으로 평균낸 **$\bar{s}_j$가 prior $\boldsymbol{p}$의 분포를 따라가게끔 하자**는 아이디어로 제안한 regularization loss 입니다. 이를 KL divergence를 이용하여 다음과 같이 나타낼 수 있습니다.
 
-$$\mathcal{L}_p = D_{KL}(\bm{p} || \bar{\bm{s}}(\bm{\theta},X))=\sum_{j=1}^c{\log{p_j \over \bar{s}_j(\bm{\theta},X)}} \tag{8}$$
+$$\mathcal{L}_p = D_{KL}(\boldsymbol{p} || \bar{\boldsymbol{s}}(\boldsymbol{\theta},X))=\sum_{j=1}^c{\log{p_j \over \bar{s}_j(\boldsymbol{\theta},X)}} \tag{8}$$
 
-$\bar{\bm{s}}(\bm{\theta},X)$는 전체 $n$개의 데이터에서 계산하지 않고 $\mathcal{B}$개의 mini-batch로 approximation 하였습니다.
+$\bar{\boldsymbol{s}}(\boldsymbol{\theta},X)$는 전체 $n$개의 데이터에서 계산하지 않고 $\mathcal{B}$개의 mini-batch로 approximation 하였습니다.
 
-$$\bar{\bm{s}}(\bm{\theta},X)={1 \over n} \sum_{i=1}^n{\bm{s}(\bm{\theta},\bm{x}_i)} \approx {1 \over |\mathcal{B}|} \sum_{\bm{x} \in \mathcal{B}}{\bm{s}(\bm{\theta},\bm{x})} \tag{9}$$
+$$\bar{\boldsymbol{s}}(\boldsymbol{\theta},X)={1 \over n} \sum_{i=1}^n{\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x}_i)} \approx {1 \over |\mathcal{B}|} \sum_{\boldsymbol{x} \in \mathcal{B}}{\boldsymbol{s}(\boldsymbol{\theta},\boldsymbol{x})} \tag{9}$$
 
 이러한 approximation이 class 수가 많거나 class imbalance가 심한 경우에는 잘 동작하지 않습니다. 그런데 실험에서 사용한 CIFAR-10이나 Clothing1M 데이터에서는 잘 동작했다고 합니다.
 
 #### Regularization loss $\mathcal{L}_e$
 
-$\mathcal{L}_e$는 soft-label method를 사용할 때 필요합니다. 식 (7)로 $Y$를 update할 때 $\bm{\theta}$와 $Y$가 local minima에 빠져서 학습이 진행되지 않을 때가 있습니다. 이러한 상황을 방지하고자 **soft-label의 entropy를 낮추어** deterministic해지는 방향의 regularization loss를 도입하였습니다.
+$\mathcal{L}_e$는 soft-label method를 사용할 때 필요합니다. 식 (7)로 $Y$를 update할 때 $\boldsymbol{\theta}$와 $Y$가 local minima에 빠져서 학습이 진행되지 않을 때가 있습니다. 이러한 상황을 방지하고자 **soft-label의 entropy를 낮추어** deterministic해지는 방향의 regularization loss를 도입하였습니다.
 
-$$\mathcal{L}_e = H(\bm{s}(\bm{\theta}, \bm{x}_i))- {1 \over n} \sum_{i=1}^n{\sum_{j=1}^c{s_j(\bm{\theta}, \bm{x}_i) \log{s_j(\bm{\theta}, \bm{x}_i)}}} \tag{10}$$
+$$\mathcal{L}_e = H(\boldsymbol{s}(\boldsymbol{\theta}, \boldsymbol{x}_i))- {1 \over n} \sum_{i=1}^n{\sum_{j=1}^c{s_j(\boldsymbol{\theta}, \boldsymbol{x}_i) \log{s_j(\boldsymbol{\theta}, \boldsymbol{x}_i)}}} \tag{10}$$
 
 그래서 전체 framework를 알고리즘으로 정리하면 다음과 같습니다.
 <center><a href='https://photos.google.com/share/AF1QipMG-NV8RVSiYgztsuc2_O82V3_bE88uYk-HAd4V0EPjj3fDfNsepvPpsc1QGIl5pw?key=YWRuVVJaY1U0bndUdGhNV19EWEVJLUQtWVRZSzBB&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/sWDomE34I5LXQR_l-D377Qp7d_TEWu8d3tuvkRJefWrW0hoLUcB64GZNt2WosMoCwfRR740PAeI3BaUfSPLyxmSwjUJuSV4al6R5piH-cJxkXS6ERLMxIQ95mI8rd8T_3QQBV2alxQ=w2400' width="80%" /></a></center>
