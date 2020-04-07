@@ -215,5 +215,6 @@ Clothing1M dataset에서는 Forward라는 기법을 제안한 논문에서 제�
 
 이 논문에서는 noisy label data를 학습하기 위해 DNN의 parameter와 label 전체를 번갈아가며 update하는 joint optimization framework를 제시합니다. 이 방법을 통해 DNN이 noisy label을 memorize하는 것을 막아 noisy label이 있을 때 SOTA의 성능을 얻었습니다. 실험이 굉장히 빵빵한 논문이긴 한데 Ablation study가 있었으면 더 좋았을 것 같습니다. 그리고 왜 loss를 그렇게 제안하였는지, 제안하는 loss를 번갈아 optimize하면 정말 좋은 DNN parameter와 loss로 수렴이 가능한지를 증명해 줬으면 더 좋았을 것 같습니다. 또 DNN의 output space에 soft-label이 크게 영향을 받을 것 같은데 Batch normalization이나 Spectral Normalization과 같이 DNN에 Lipschitz constraint을 거는 방법들이 soft-label에 어떻게 영향을 주는지도 실험해보았다면 더 재밌었을 것 같습니다.
 
+{% figure caption:"Le logo de **Jekyll** et son clin d'oeil à Robert Louis Stevenson" %}
 ![asdf](https://lh3.googleusercontent.com/m_4byLwc-5tBNgyyzAoZwhiyeJXcihgDzXRG1NZ30snd_uMuWgqMsrxMsZX4oPCnN3nkV8FW3PQEDfLvTzYiyCIEXd8vispizI-vdpKMiEyXtFOEWubJ0TI0lNf8unxu3wLDAhqFfQ=w2400)
-*asdf*
+{% endfigure %}
