@@ -13,17 +13,24 @@ use_math: true
 
 예를 들면, 강아지 사진들의 품종 label을 얻기 위해 Amazon Mechanical Turk (AMT)를 이용하는 상황을 가정해봅시다. 많은 작업자들이 아래 그림과 같이 허스키와 말라뮤트를 잘 구별하지 못한다면 AMT를 통해 얻은 label이 noisy 할 수 밖에 없습니다. 그리고 잘못 달린 label이 진실이라고 철썩같이 믿고 학습된 모델은 마찬가지로 허스키와 말라뮤트를 잘 구별할 수 없을 것입니다.
 
-<center><a href='https://photos.google.com/share/AF1QipNl74a6QByFgFZIQUmpnSaVihpnn_97cEVAoG-_EusA2pE8k78mYFUqWh19lzMx6A?key=b1JwWFNhR1JBVlA5T3VvbFBqTzUtUllrRHdwRkFB&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/zmYLKLM7Ar4BSGFkhe_d4cmq93hU4iiT4F2ArgPzPmmJJgop45LHicPH7QyddH83_X5hahvZfd-oggIECrmY1IHklgikqwBJpXLnP7QdP0JbIDW156JMtrSX3D0gnPcx_NaQL73ffg=w2400' width="50%" height="80%"></a></center>
+<p align="center">
+<a href='https://photos.google.com/share/AF1QipNl74a6QByFgFZIQUmpnSaVihpnn_97cEVAoG-_EusA2pE8k78mYFUqWh19lzMx6A?key=b1JwWFNhR1JBVlA5T3VvbFBqTzUtUllrRHdwRkFB&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/zmYLKLM7Ar4BSGFkhe_d4cmq93hU4iiT4F2ArgPzPmmJJgop45LHicPH7QyddH83_X5hahvZfd-oggIECrmY1IHklgikqwBJpXLnP7QdP0JbIDW156JMtrSX3D0gnPcx_NaQL73ffg=w2400' width="50%" height="80%"></a>
+<br>
+<em>Label이 noisy해질 수 있는 이미지 사례; source: <a href="https://1boon.kakao.com/petxlab/58e1d992ed94d200019b4c4f">petxlab</a></em>
+</p>
 
-*Label이 noisy해질 수 있는 이미지 사례; source:* [petxlab](https://1boon.kakao.com/petxlab/58e1d992ed94d200019b4c4f)
+
 
 보통 이런 상황에서는 label noise가 특정 label로만 발생하기 때문에 이를 **Asymmetric label noise**라고 부릅니다. 반대로 label noise가 완전히 random한 label로 발생하는 경우 이를 **Symmetric label noise**라고 부릅니다.
 
 또 다른 예를 들면, 꽃을 분류하는 모델을 학습시키기 위한 데이터를 구하기 위해 구글에서 "아이리스"를 검색하면 아이리스 꽃 뿐만 아니라 드라마 아이리스 포스터도 나옵니다. 사실 이런 경우는 noisy label도 되지만 데이터 자체가 우리가 관심있는 영역 (ex. 꽃) 밖에 있어서 이러한 데이터가 미치는 나쁜 영향을 제거하는 것은 엄밀히는 또 다른 문제인 것 같습니다.
 
-<center><a href='https://photos.google.com/share/AF1QipMay8K5uvt6k-X_DcmQGRz13LacvhtMF2tqLy9TtQNYSunFn2rUTc8Trm9kBjEOCA?key=ZEJHbUZLSkF1bFlDa3lIX19PQ0M3T1lOc21xemVn&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/OzW0jhVNEHNvPZZAbuHb7xY6t8ykGEAxf2qb-3aKNGhIH8rL_n69ntcU9f0ly_MhfMchtUHJ205OVMctag1WjEF8mFE320bTbjggTM06Zi0fKssZ4xSXDJOXqdvPg-1OI0oI1IVHFQ=w2400' width="80%" height="80%"></a></center>
+<p align="center">
+<a href='https://photos.google.com/share/AF1QipMay8K5uvt6k-X_DcmQGRz13LacvhtMF2tqLy9TtQNYSunFn2rUTc8Trm9kBjEOCA?key=ZEJHbUZLSkF1bFlDa3lIX19PQ0M3T1lOc21xemVn&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/OzW0jhVNEHNvPZZAbuHb7xY6t8ykGEAxf2qb-3aKNGhIH8rL_n69ntcU9f0ly_MhfMchtUHJ205OVMctag1WjEF8mFE320bTbjggTM06Zi0fKssZ4xSXDJOXqdvPg-1OI0oI1IVHFQ=w2400' width="80%" height="80%"></a>
+<br>
+<em>원하지 않는 데이터가 crawling되는 경우; 구글 이미지 검색</em>
+</p>
 
-*원하지 않는 데이터가 crawling되는 경우; 구글 이미지 검색*
 
 결국 우리가 label이 noisy한 데이터셋을 가지고 있을 때, 이러한 데이터에서 최대한 좋은 성능을 내는 딥러닝 모델을 학습키기 위한 기법들이 연구되어 왔고, 이 논문 또한 noisy label에 robust한 모델을 학습시키는 기법을 소개하고 있습니다.
 
@@ -215,6 +222,8 @@ Clothing1M dataset에서는 Forward라는 기법을 제안한 논문에서 제�
 
 이 논문에서는 noisy label data를 학습하기 위해 DNN의 parameter와 label 전체를 번갈아가며 update하는 joint optimization framework를 제시합니다. 이 방법을 통해 DNN이 noisy label을 memorize하는 것을 막아 noisy label이 있을 때 SOTA의 성능을 얻었습니다. 실험이 굉장히 빵빵한 논문이긴 한데 Ablation study가 있었으면 더 좋았을 것 같습니다. 그리고 왜 loss를 그렇게 제안하였는지, 제안하는 loss를 번갈아 optimize하면 정말 좋은 DNN parameter와 loss로 수렴이 가능한지를 증명해 줬으면 더 좋았을 것 같습니다. 또 DNN의 output space에 soft-label이 크게 영향을 받을 것 같은데 Batch normalization이나 Spectral Normalization과 같이 DNN에 Lipschitz constraint을 거는 방법들이 soft-label에 어떻게 영향을 주는지도 실험해보았다면 더 재밌었을 것 같습니다.
 
-{% figure caption:"Le logo de **Jekyll** et son clin d'oeil à Robert Louis Stevenson" %}
-![asdf](https://lh3.googleusercontent.com/m_4byLwc-5tBNgyyzAoZwhiyeJXcihgDzXRG1NZ30snd_uMuWgqMsrxMsZX4oPCnN3nkV8FW3PQEDfLvTzYiyCIEXd8vispizI-vdpKMiEyXtFOEWubJ0TI0lNf8unxu3wLDAhqFfQ=w2400)
-{% endfigure %}
+<p align="center">
+<a href='https://photos.google.com/share/AF1QipNl74a6QByFgFZIQUmpnSaVihpnn_97cEVAoG-_EusA2pE8k78mYFUqWh19lzMx6A?key=b1JwWFNhR1JBVlA5T3VvbFBqTzUtUllrRHdwRkFB&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/zmYLKLM7Ar4BSGFkhe_d4cmq93hU4iiT4F2ArgPzPmmJJgop45LHicPH7QyddH83_X5hahvZfd-oggIECrmY1IHklgikqwBJpXLnP7QdP0JbIDW156JMtrSX3D0gnPcx_NaQL73ffg=w2400' width="50%" height="80%"></a>
+<br>
+    <em>asdf</em>
+</p>
