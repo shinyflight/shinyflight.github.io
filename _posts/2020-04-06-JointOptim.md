@@ -82,7 +82,7 @@ $$\min_{\boldsymbol{\theta},Y}\mathcal{L}(\boldsymbol{\theta},Y|X) \tag{2}$$
 
 $$\mathcal{L}(\boldsymbol{\theta},Y|X) =\mathcal{L}_c(\boldsymbol{\theta},Y|X) + \alpha \mathcal{L}_p(\boldsymbol{\theta}|X)+\beta\mathcal{L}_e(\boldsymbol{\theta}|X) \tag{3}$$
 
-$\mathcal{L}_c$는 classification loss로 다음과 같이 label $\boldsymbol{y}$와 final layer의 output $\boldsymbol{s}$ 간의 KL divergence로 계산합니다.
+$\mathcal{L}_c$는 classification loss로 다음과 같이 label $\boldsymbol{y}_{i}$와 final layer의 output $\boldsymbol{s}(\boldsymbol{\theta}, \boldsymbol{x}_i)$ 간의 KL divergence로 계산합니다.
 
 $$\mathcal{L}_c(\boldsymbol{\theta},Y|X) = {1 \over n}\sum_{i=1}^n D_{KL}(\boldsymbol{y}_i || \boldsymbol{s}(\boldsymbol{\theta}, \boldsymbol{x}_i)) \tag{4}$$
 
@@ -194,7 +194,7 @@ Soft-label method가 가장 수렴이 빠르고 높은 recovery accuracy를 보�
 
 <center><a href='https://photos.google.com/share/AF1QipOsweOqhWjJx8k4q1Tdc4xvdo0qz_7BZjdlOlsQH14nQOs5WuiWUHiGUTP_Ml-WCw?key=ODNqSVNtUWllYXNzV0FVWEdwSUtlWFVBVHMybEx3&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/eJA9ysbe9SNMeU8XwuOfYM7313M8lSPaprLfxiqLHj_ZNEpqvs2gUpmcAqbh6kmvyOSXZM3wVNaCLVgS8LeLXbR5uRtxA0eNYtedoatCn5Hoqyj-O1hvnwR0FS9bKSwl9ypNOwJSdw=w2400' /></a></center>
 
-SN-CIFAR와 AN-CIFAR 실험 결과를 보면 다른 방법들과 비교하였을 때 test accuracy와 recovery accuracy의 best 값은 다른 방법과 비슷하거나 근소하게 높지만 마지막 epoch (last)에서의 성능이 월등이 좋은 것을 확인할 수 있습니다.
+SN-CIFAR와 AN-CIFAR 실험 결과를 보면 다른 방법들과 비교하였을 때 test accuracy와 recovery accuracy의 best 값은 다른 방법과 비슷하거나 근소하게 높지만 마지막 epoch (last)에서의 성능이 월등히 좋은 것을 확인할 수 있습니다.
 
 <center><a href='https://photos.google.com/share/AF1QipM5Hy-sdvKXZpnbwErqnD74qP1FuE_mncFyzEuBMRWR2NE4sbVg0epirq1xkCpstA?key=cG16WDFMc25XVHF0Z19fNVFDLWxmUVlRdTR2eXpn&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/meFuNIVCp-C6sP273BeN4qpTU4KZpKR-VA_X-uENflYuuLPR5_CcIqK0w7bwYNO6zSWoZXfin6gnleaSzWnd1hG4wlAaw5QkhrQl2WEPM4Bj4o2fsdGMYQOO4XA6ke8e2KNLdxNShA=w2400' /></a></center>
 
@@ -214,3 +214,6 @@ Clothing1M dataset에서는 Forward라는 기법을 제안한 논문에서 제�
 ## Conclusion
 
 이 논문에서는 noisy label data를 학습하기 위해 DNN의 parameter와 label 전체를 번갈아가며 update하는 joint optimization framework를 제시합니다. 이 방법을 통해 DNN이 noisy label을 memorize하는 것을 막아 noisy label이 있을 때 SOTA의 성능을 얻었습니다. 실험이 굉장히 빵빵한 논문이긴 한데 Ablation study가 있었으면 더 좋았을 것 같습니다. 그리고 왜 loss를 그렇게 제안하였는지, 제안하는 loss를 번갈아 optimize하면 정말 좋은 DNN parameter와 loss로 수렴이 가능한지를 증명해 줬으면 더 좋았을 것 같습니다. 또 DNN의 output space에 soft-label이 크게 영향을 받을 것 같은데 Batch normalization이나 Spectral Normalization과 같이 DNN에 Lipschitz constraint을 거는 방법들이 soft-label에 어떻게 영향을 주는지도 실험해보았다면 더 재밌었을 것 같습니다.
+
+![asdf](https://lh3.googleusercontent.com/m_4byLwc-5tBNgyyzAoZwhiyeJXcihgDzXRG1NZ30snd_uMuWgqMsrxMsZX4oPCnN3nkV8FW3PQEDfLvTzYiyCIEXd8vispizI-vdpKMiEyXtFOEWubJ0TI0lNf8unxu3wLDAhqFfQ=w2400)
+*asdf*
